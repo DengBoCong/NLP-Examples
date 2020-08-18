@@ -28,8 +28,8 @@ ElementTree在 Python 标准库中有两种实现。
 app = Flask(__name__, static_url_path="/static")
 
 
-# """定义应答函数，用于获取输入信息并返回相应的答案"""
 @app.route('/message', methods=['POST'])
+# """定义应答函数，用于获取输入信息并返回相应的答案"""
 def reply():
     # 从请求中获取参数信息
     req_msg = request.form['msg']
