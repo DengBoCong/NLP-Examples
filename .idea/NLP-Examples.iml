@@ -3,6 +3,7 @@
   <component name="NewModuleRootManager">
     <content url="file://$MODULE_DIR$">
       <sourceFolder url="file://$MODULE_DIR$/ChineseChatbot-Seq2Seq" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/GPT2-Chinese" isTestSource="false" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
