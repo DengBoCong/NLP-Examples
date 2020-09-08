@@ -4,14 +4,20 @@ import common.attention as attention
 
 config = {}
 
-config = getConfig.get_config('config/ini/seq2seq.ini')
+config = getConfig.get_config_ini('config/ini/seq2seq.ini')
 
+vocab_inp_size = config['enc_vocab_size']
+vocab_tar_size = config['dec_vocab_size']
+embedding_dim = config['embedding_dim']
+units = config['layer_size']
+BATCH_SIZE = config['batch_size']
 
 class Encoder(tf.keras.Model):
     def __init__(self, vocab_size, embedding_dim, enc_units, batch_sz):
         super(Encoder, self).__init__()
         self.batch_sz = batch_sz
         self.enc_units = enc_units
+
         self.embedding = tf.keras.layers.Embedding(vocab_size, embedding_dim)
         self.gru = tf.keras.layers.GRU(self.enc_units, return_sequences=True, return_state=True,
                                        recurrent_initializer='glorot_uniform')
@@ -48,13 +54,6 @@ class Decoder(tf.keras.Model):
         x = self.fc(output)
 
         return x, state, attention_weights
-
-
-vocab_inp_size = config['enc_vocab_size']
-vocab_tar_size = config['dec_vocab_size']
-embedding_dim = config['embedding_dim']
-units = config['layer_size']
-BATCH_SIZE = config['batch_size']
 
 encoder = Encoder(vocab_inp_size, embedding_dim, units, BATCH_SIZE)
 decoder = Decoder(vocab_tar_size, embedding_dim, units, BATCH_SIZE)

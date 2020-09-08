@@ -8,7 +8,7 @@ import io
 
 config = {}
 
-config = getConfig.get_config('config/ini/seq2seq.ini')
+config = getConfig.get_config_ini('config/ini/seq2seq.ini')
 
 vocab_inp_size = config['enc_vocab_size']
 vocab_tar_size = config['dec_vocab_size']
